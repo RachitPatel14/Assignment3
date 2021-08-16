@@ -8,9 +8,17 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const posts = require('./routes/api/posts');
+const drum = require('./routes/api/drum.js');
+const flute = require('./routes/api/flute.js');
+const keyboard = require('./routes/api/keyboard.js');
+const violin = require('./routes/api/violin.js');
+const guitar = require('./routes/api/guitar.js');
 
-app.use('/api/posts', posts);
+app.use('/api/posts/drum_list', drum);
+app.use('/api/posts/flute_list', flute);
+app.use('/api/posts/guitar_list', guitar);
+app.use('/api/posts/keyboard_list', keyboard);
+app.use('/api/posts/violin_list', violin);
 
 // Handle production
 if (process.env.NODE_ENV === 'production') {
