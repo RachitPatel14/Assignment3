@@ -1,10 +1,26 @@
-const mongoose = require('mongoose');
-const { Drum, Flute, Guitar, Keyboard, Violin } = require('./model.js');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-mongoose.connect('mongodb://localhost:27017/music_industry',
-{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-});
+const app = express();
 
+// Middleware
+app.use(bodyParser.json());
+app.use(cors());
+
+const posts = require('./routes/api/posts');
+
+app.use('/api/posts', posts);
+
+// Handle production
+if (process.env.NODE_ENV === 'production') {
+  // Static folder
+  app.use(express.static(__dirname + '/public/'));
+
+  // Handle SPA
+  app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
+}
+
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => console.log(`Server started on port ${port}`));
