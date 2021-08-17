@@ -34,7 +34,7 @@ async function loadPostsCollection() {
     }
   );
 
-  return client.db('music_industry').collection('viollin_list');
+  return client.db('music_industry').collection('violin_list');
 }
 
 module.exports = router;

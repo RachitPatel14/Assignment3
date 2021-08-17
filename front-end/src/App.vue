@@ -1,19 +1,18 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <PostComponent msg="Welcome to Your Vue.js App"/>
+    <guitar-component/>
   </div>
 </template>
 
 <script>
-import PostComponent from './components/PostComponent.vue'
-
+import GuitarComponent from './components/GuitarComponent.vue';
 export default {
   name: 'App',
   components: {
-    PostComponent
-  }
-}
+    GuitarComponent
+    }
+    }
 </script>
 
 <style>
